@@ -670,7 +670,521 @@ namespace Cadastro_de_Veiculos{
         }
 
         static async Task Motorcycle(double km = 0){
-           
+           int id = nextId;
+            nextId++;
+            string? mark = "", model = "", yearManufacture;
+
+            bool exit = false;
+
+            while(!exit){
+                Console.Clear();
+                Console.WriteLine("=== MENU - CADASTRO DE MOTO 🏍️ ===");
+                Console.WriteLine("Escolha a marca da moto: ");
+                Console.WriteLine("[1] - Honda");
+                Console.WriteLine("[2] - Yamaha");
+                Console.WriteLine("[3] - Mottu (Shineray)");
+                Console.WriteLine("[4] - Haojue");
+                Console.WriteLine("[5] - BMW");
+                Console.WriteLine("[6] - Bajaj");
+                Console.WriteLine("[7] - Dafra");
+                Console.WriteLine("[8] - Royal Enfield");
+                Console.WriteLine("[9] - Triumph");
+                Console.WriteLine("[10] - Harley-Davidson");
+                Console.WriteLine("[11] - Outro");
+                string? choiceMoto = Console.ReadLine();
+
+                bool exitModel = false;
+                switch (choiceMoto){
+                    case "1":
+                        mark = "Honda";
+                        while(!exitModel){
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da Honda:");
+                            Console.WriteLine("[1] - CG 160");
+                            Console.WriteLine("[2] - Biz");
+                            Console.WriteLine("[3] - Pop 110i");
+                            Console.WriteLine("[4] - CB 300F Twister");
+                            Console.WriteLine("[5] - XRE 300 Sahara");
+                            string? choice = Console.ReadLine();
+                            switch (choice)
+                            {
+                                case "1": 
+                                    model = "CG 160"; 
+                                    exitModel = true; 
+                                    break;
+                                case "2":
+                                    model = "Biz";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Pop 110i";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "CB 300F Twister";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "XRE 300 Sahara";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "2":
+                        mark = "Yamaha";
+                        while (!exitModel){
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da Yamaha:");
+                            Console.WriteLine("[1] - Fazer 250");
+                            Console.WriteLine("[2] - Factor 150");
+                            Console.WriteLine("[3] - Lander 250");
+                            Console.WriteLine("[4] - NMax 160");
+                            Console.WriteLine("[5] - MT-03");
+                            string? choice = Console.ReadLine();
+                            switch (choice)
+                            {
+                                case "1":
+                                    model = "Fazer 250";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Factor 150";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Lander 250";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "NMax 160";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "MT-03";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+                    case "3":
+                        mark = "Yamaha";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Fazer 250");
+                            Console.WriteLine("[2] - XTZ 250 Lander");
+                            Console.WriteLine("[3] - MT-03");
+                            Console.WriteLine("[4] - NMAX 160");
+                            Console.WriteLine("[5] - Crosser 150");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Fazer 250";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "XTZ 250 Lander";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "MT-03";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "NMAX 160";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Crosser 150";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "4":
+                        mark = "Shineray";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Jet 50");
+                            Console.WriteLine("[2] - Phoenix 50");
+                            Console.WriteLine("[3] - XY 50 Q Phoenix");
+                            Console.WriteLine("[4] - Worker 125");
+                            Console.WriteLine("[5] - Jet 125 SS");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Jet 50";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Phoenix 50";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "XY 50 Q Phoenix";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "Worker 125";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Jet 125 SS";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "5":
+                        mark = "BMW";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - G 310 R");
+                            Console.WriteLine("[2] - G 310 GS");
+                            Console.WriteLine("[3] - F 850 GS");
+                            Console.WriteLine("[4] - R 1250 GS");
+                            Console.WriteLine("[5] - S 1000 RR");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "G 310 R";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "G 310 GS";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "F 850 GS";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "R 1250 GS";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "S 1000 RR";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "6":
+                        mark = "Kawasaki";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Ninja 400");
+                            Console.WriteLine("[2] - Z400");
+                            Console.WriteLine("[3] - Z900");
+                            Console.WriteLine("[4] - Versys 650");
+                            Console.WriteLine("[5] - Vulcan S");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Ninja 400";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Z400";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Z900";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "Versys 650";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Vulcan S";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "7":
+                        mark = "Dafra";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Citycom 300i");
+                            Console.WriteLine("[2] - Horizon 150");
+                            Console.WriteLine("[3] - Apache RTR 200");
+                            Console.WriteLine("[4] - NH 190");
+                            Console.WriteLine("[5] - Next 300");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Citycom 300i";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Horizon 150";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Apache RTR 200";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "NH 190";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Next 300";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "8":
+                        mark = "Royal Enfield";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Meteor 350");
+                            Console.WriteLine("[2] - Classic 350");
+                            Console.WriteLine("[3] - Himalayan");
+                            Console.WriteLine("[4] - Scram 411");
+                            Console.WriteLine("[5] - Interceptor 650");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Meteor 350";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Classic 350";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Himalayan";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "Scram 411";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Interceptor 650";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "9":
+                        mark = "Harley-Davidson";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - Iron 883");
+                            Console.WriteLine("[2] - Forty-Eight");
+                            Console.WriteLine("[3] - Street Glide");
+                            Console.WriteLine("[4] - Fat Boy 114");
+                            Console.WriteLine("[5] - Road King Special");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "Iron 883";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "Forty-Eight";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Street Glide";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "Fat Boy 114";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "Road King Special";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "10":
+                        mark = "Suzuki";
+                        exitModel = false;
+                        while (!exitModel)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Escolha o modelo da moto:");
+                            Console.WriteLine("[1] - GSX-S750");
+                            Console.WriteLine("[2] - V-Strom 650");
+                            Console.WriteLine("[3] - Burgman 400");
+                            Console.WriteLine("[4] - Intruder 125");
+                            Console.WriteLine("[5] - GSR 750");
+                            string? choiceModel = Console.ReadLine();
+
+                            switch (choiceModel)
+                            {
+                                case "1":
+                                    model = "GSX-S750";
+                                    exitModel = true;
+                                    break;
+                                case "2":
+                                    model = "V-Strom 650";
+                                    exitModel = true;
+                                    break;
+                                case "3":
+                                    model = "Burgman 400";
+                                    exitModel = true;
+                                    break;
+                                case "4":
+                                    model = "Intruder 125";
+                                    exitModel = true;
+                                    break;
+                                case "5":
+                                    model = "GSR 750";
+                                    exitModel = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    await Task.Delay(2000);
+                                    break;
+                            }
+                        }
+                        exit = true;
+                        break;
+
+                    case "11":
+                        Console.Write("Digite a marca do veículo: ");
+                        mark = Console.ReadLine();
+                        Console.Write("Digite o modelo do veículo: ");
+                        model = Console.ReadLine();
+                        exit = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                        await Task.Delay(2000);
+                        break;                     
+                }
+            }
+            
+            DateTime dataConvert;
+            string formato = "dd/MM/yyyy";
+
+            while(true){
+                Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
+                yearManufacture = Console.ReadLine();
+
+                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
+                    break; 
+                } else {
+                    Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
+                }
+            }
+            
+            Console.WriteLine($"ID = {id}");
+            Console.WriteLine($"Marca = {mark}");
+            Console.WriteLine($"Modelo = {model}");
+            Console.WriteLine($"Quilometragem = {km.ToString("F2", CultureInfo.InvariantCulture)}km");
+            Console.WriteLine($"Ano de Fabricação = {dataConvert.ToString("dd/MM/yyyy")}");
+            
+            Dictionary<string, object> newMotorcycle = new Dictionary<string, object>();
+            newMotorcycle["id"] = id;
+            newMotorcycle["marca"] = mark;
+            newMotorcycle["modelo"] = model;
+            newMotorcycle["dataDeFabricacao"] = dataConvert;
+            newMotorcycle["quilometragem"] = km;
+
+            motorcycle.Add(newMotorcycle);
+
+            Console.WriteLine($"Moto cadastrado com sucesso no banco de dados! {DateTime.Now}");
+            await Task.Delay(5000);
+            return;
         }
 
         static int nextId = 1;
