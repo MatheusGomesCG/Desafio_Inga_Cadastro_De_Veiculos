@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Cadastro_de_Veiculos{
@@ -34,6 +35,7 @@ namespace Cadastro_de_Veiculos{
                         await ListVehicles();
                         break;
                     case "3":
+                        await EditVehicle();
                         break;
                     case "4":
                         break;
@@ -700,7 +702,7 @@ namespace Cadastro_de_Veiculos{
             newCar["id"] = id;
             newCar["marca"] = mark;
             newCar["modelo"] = model;
-            newCar["dataDeFabricacao"] = dataConvert;
+            newCar["dataDeFabricao"] = dataConvert;
             newCar["quilometragem"] = km;
 
             car.Add(newCar);
@@ -1228,7 +1230,7 @@ namespace Cadastro_de_Veiculos{
             newMotorcycle["id"] = id;
             newMotorcycle["marca"] = mark;
             newMotorcycle["modelo"] = model;
-            newMotorcycle["dataDeFabricacao"] = dataConvert;
+            newMotorcycle["dataDeFabricao"] = dataConvert;
             newMotorcycle["quilometragem"] = km;
 
             motorcycle.Add(newMotorcycle);
@@ -1283,7 +1285,8 @@ namespace Cadastro_de_Veiculos{
             }
         }
         
-        static void ListCar(){
+        static void ListCar()
+        {
             Console.WriteLine("=== CARROS CADASTRADOS NO SISTEMA 🚗  ===");
             
             if(car.Count == 0)
@@ -1311,7 +1314,8 @@ namespace Cadastro_de_Veiculos{
             }
         }
 
-        static void ListMotorcycle(){
+        static void ListMotorcycle()
+        {
             Console.WriteLine("=== MOTOS CADASTRADOS NO SISTEMA 🏍️  ===");
             
             if(motorcycle.Count == 0)
@@ -1339,6 +1343,212 @@ namespace Cadastro_de_Veiculos{
             }
         }
 
+        static async Task EditVehicle()
+        {
+            bool exit = false;
+            while(!exit)
+            {
+            Console.Clear();
+            Console.WriteLine("=== 🚗 MENU - EDITAR AUTOMÓVEIS 🏍️ ===");
+            Console.WriteLine("[1] - Editar Carro");
+            Console.WriteLine("[2] - Editar Moto");
+            Console.WriteLine("[3] - Voltar ao menu");
+            string? choice = Console.ReadLine();
+
+                switch(choice)
+                {
+                    case "1":
+                        await EditCar();
+                        exit = true;
+                        break;
+                    case "2":
+                        await EditMotorcycle();
+                        exit = true;
+                        break;
+                    case "3":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                        await Task.Delay(3000);
+                        break;
+                }
+            }
+        }
+
+        static async Task EditCar()
+        {
+            Console.Clear();
+            bool exit = false;
+            Console.WriteLine("=== MENU - EDITAR CARRO 🚗 ===");
+            Console.Write("Digite o 'ID' do carro: ");
+            string? id = Console.ReadLine();
+
+            var objCar = car.Find(p => p["id"].Equals(int.Parse(id)));
+
+            while(!exit)
+            {
+                if (objCar == null)
+                {
+                    Console.WriteLine("O 'ID' digitado não consta no banco de dados");
+                    await Task.Delay(2000);
+                    exit = true;
+                }
+                else
+                {
+                    string choice = MenuEdit();
+                    switch(choice)
+                    {
+                        case "1":
+                            Console.Write("Digite a nova marca: ");
+                            objCar["marca"] = Console.ReadLine();
+                            Console.WriteLine("Marca modificada com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "2":
+                            Console.Write("Digite o novo modelo: ");
+                            objCar["modelo"] =Console.ReadLine();
+                            Console.WriteLine("Modelo modificado com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "3":
+                            Console.Write("Digite a nova Quilometragem: ");
+                            objCar["quilometragem"] = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                            Console.WriteLine("Quilometragem modificada com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "4":
+                            Console.Write("Digite a nova Data de Fabricação: ");
+                            DateTime dataConvert; 
+                            string formato = "dd/MM/yyyy";
+
+                            while(true)
+                            {
+                                Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
+                                string dateInput = Console.ReadLine();
+
+                                if(DateTime.TryParseExact(dateInput, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
+                                {
+                                    objCar["dataDeFabricao"] = dataConvert;
+                                    break; 
+                                } 
+                                else
+                                {
+                                    Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
+                                }
+                            }
+
+                            Console.WriteLine("Data de fabricação modificado com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "5":
+                            exit = true;
+                            break;
+                        default:
+                            Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                            await Task.Delay(2000);
+                            break;
+                    }
+                }
+            }
+        }
+        static async Task EditMotorcycle()
+        {
+            Console.Clear();
+            bool exit = false;
+            Console.WriteLine("=== MENU - EDITAR MOTO 🏍️ ===");
+            Console.Write("Digite o 'ID' do moto: ");
+            string? id = Console.ReadLine();
+
+            var objMotorcycle = motorcycle.Find(p => p["id"].Equals(int.Parse(id)));
+
+            while(!exit)
+            {
+                if (objMotorcycle == null)
+                {
+                    Console.WriteLine("O 'ID' digitado não consta no banco de dados");
+                    await Task.Delay(2000);
+                    exit = true;
+                }
+                else
+                {
+                    string choice = MenuEdit();
+                    switch(choice)
+                    {
+                        case "1":
+                            Console.Write("Digite a nova marca: ");
+                            objMotorcycle["marca"] = Console.ReadLine();
+                            Console.WriteLine("Marca modificada com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "2":
+                            Console.Write("Digite o novo modelo: ");
+                            objMotorcycle["modelo"] = Console.ReadLine();
+                            Console.WriteLine("Modelo modificado com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "3":
+                            Console.Write("Digite a nova Quilometragem: ");
+                            objMotorcycle["quilometragem"] = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                            Console.WriteLine("Quilometragem modificada com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "4":
+                            Console.Write("Digite a nova Data de Fabricação: ");
+                            DateTime dataConvert; 
+                            string formato = "dd/MM/yyyy";
+
+                            while(true)
+                            {
+                                Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
+                                string dateInput = Console.ReadLine();
+
+                                if(DateTime.TryParseExact(dateInput, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
+                                {
+                                    objMotorcycle["dataDeFabricao"] = dataConvert;
+                                    break; 
+                                } 
+                                else
+                                {
+                                    Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
+                                }
+                            }
+
+                            Console.WriteLine("Data de fabricação modificado com sucesso!");
+                            await Task.Delay(2000);
+                            exit = true;
+                            break;
+                        case "5":
+                            exit = true;
+                            break;
+                        default:
+                            Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                            await Task.Delay(2000);
+                            break;
+                    }
+                }
+            }
+        }
+        static string MenuEdit()
+        {
+            Console.WriteLine();
+            Console.WriteLine("O que você deseja modificar?");
+            Console.WriteLine("[1] - Marca");
+            Console.WriteLine("[2] - Modelo");
+            Console.WriteLine("[3] - Quilometragem");
+            Console.WriteLine("[4] - Data de fabricação");
+            Console.WriteLine("[5] - Voltar ao menu");
+            string? choice = Console.ReadLine();
+
+            return choice;                
+        }
         static int nextId = 1; 
         static List<Dictionary<string, object>> motorcycle = new List<Dictionary<string, object>>();
         static List<Dictionary<string, object>> car = new List<Dictionary<string, object>>();
