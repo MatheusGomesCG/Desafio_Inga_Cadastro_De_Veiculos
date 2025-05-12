@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Cadastro_de_Veiculos{
     class Program{
-        static async Task Main(string[] args){
-            
+        static async Task Main(string[] args)
+        {
             await Menu();
         }
-        static async Task Menu(){
-
+        static async Task Menu()
+        {
             bool exit = false;
 
-            while(!exit){
+            while(!exit)
+            {
                 Console.Clear();
                 Console.WriteLine("=== 🚗 MENU - CADASTRO DE AUTOMÓVEIS 🏍️ ===");
                 Console.WriteLine("[1] - Cadastrar novos automóveis");
@@ -26,11 +27,13 @@ namespace Cadastro_de_Veiculos{
                 Console.WriteLine("[6] - Sair");
                 string? choice = Console.ReadLine();
 
-                switch(choice){
+                switch(choice)
+                {
                     case "1":
                         await RegisterVehicle();
                         break;
                     case "2":
+                        await ListVehicles();
                         break;
                     case "3":
                         break;
@@ -51,11 +54,12 @@ namespace Cadastro_de_Veiculos{
             }
         }
 
-        static async Task RegisterVehicle(){
-        
+        static async Task RegisterVehicle()
+        {
             bool exit = false;
 
-            while(!exit){
+            while(!exit)
+            {
             Console.Clear();
             Console.WriteLine("=== 🚗 MENU - CADASTRO DE AUTOMÓVEIS 🏍️ ===");
             Console.WriteLine("[1] - Automóvel novo");
@@ -63,7 +67,8 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine("[3] - Voltar o Menu");
             string? choice = Console.ReadLine();
 
-                switch(choice){
+                switch(choice)
+                {
                     case "1":
                         await NewVehicle();
                         exit = true;
@@ -85,10 +90,12 @@ namespace Cadastro_de_Veiculos{
 
         }
         
-        static async Task NewVehicle(){
+        static async Task NewVehicle()
+        {
             bool exit = false;
 
-            while(!exit){
+            while(!exit)
+            {
             Console.Clear();
             Console.WriteLine("=== 🚗 MENU - CADASTRO DE AUTOMÓVEIS 🏍️ ===");
             Console.WriteLine("[1] - Carro");
@@ -96,7 +103,8 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine("[3] - Voltar o Menu");
             string? choice = Console.ReadLine();
 
-                switch(choice){
+                switch(choice)
+                {
                     case "1":
                         await Car();
                         exit = true;
@@ -117,7 +125,8 @@ namespace Cadastro_de_Veiculos{
             }
         }
 
-        static async Task UsedVehicle(){
+        static async Task UsedVehicle()
+        {
             bool exit = false;
             double km;
 
@@ -125,11 +134,15 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine("=== 🚗 MENU - CADASTRO DE AUTOMÓVEIS 🏍️ ===");
             Console.Write("Digite a quantidade de km rodados: ");
             string mileage = Console.ReadLine();
-            while (true){
-                if(double.TryParse(mileage, out km)){
+            while (true)
+            {
+                if(double.TryParse(mileage, out km))
+                {
                     km = double.Parse(mileage, CultureInfo.InvariantCulture);
                     break;
-                } else {
+                }
+                else
+                {
                     Console.WriteLine("O campo: 'KM' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                     await Task.Delay(2000);
                     Console.Clear();
@@ -137,7 +150,8 @@ namespace Cadastro_de_Veiculos{
                     mileage = Console.ReadLine();
                 }
             }
-            while(!exit){
+            while(!exit)
+            {
             Console.Clear();
             Console.WriteLine("=== 🚗 MENU - CADASTRO DE AUTOMÓVEIS 🏍️ ===");
             Console.WriteLine("[1] - Carro");
@@ -145,7 +159,8 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine("[3] - Voltar o Menu");
             string? choice = Console.ReadLine();
 
-                switch(choice){
+                switch(choice)
+                {
                     case "1":
                         await Car(km);
                         exit = true;
@@ -166,14 +181,16 @@ namespace Cadastro_de_Veiculos{
             }
         }
 
-        static async Task Car(double km = 0.0){
+        static async Task Car(double km = 0.0)
+        {
              int id = nextId;
             nextId++;
             string? mark = "", model = "", yearManufacture;
             
             bool exit = false;
 
-            while(!exit){
+            while(!exit)
+            {
                 Console.Clear();
                 Console.WriteLine("=== MENU - CADASTRO DE CARRO 🚗 ===");
                 Console.WriteLine("Escolha a marca do veículo: ");
@@ -190,7 +207,8 @@ namespace Cadastro_de_Veiculos{
                 Console.WriteLine("[11] - Outro");
                 string? choice = Console.ReadLine();
 
-                switch(choice){
+                switch(choice)
+                {
                     case "1":
                         mark = "Fiat";
                         bool exitWhile = false;
@@ -204,7 +222,9 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[4] - Toro");
                             Console.WriteLine("[5] - Fastback");
                             string? choiceModel = Console.ReadLine();
-                            switch (choiceModel){
+
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Strada";
                                     exitWhile = true;
@@ -237,7 +257,8 @@ namespace Cadastro_de_Veiculos{
                     case "2":
                         mark = "Volkswagen";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("=== MENU - CADASTRO DE CARRO 🚗 ===");
                             Console.WriteLine("Escolha o modelo do veículo: ");
@@ -248,7 +269,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Taos");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Polo";
                                     exitWhile = true;
@@ -281,7 +303,8 @@ namespace Cadastro_de_Veiculos{
                     case "3":
                         mark = "Chevrolet";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo do veículo:");
                             Console.WriteLine("[1] - Onix");
@@ -291,7 +314,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Spin");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Onix";
                                     exitWhile = true;
@@ -324,7 +348,8 @@ namespace Cadastro_de_Veiculos{
                     case "4":
                         mark = "Hyundai";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - HB20");
@@ -334,7 +359,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Santa Fe");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "HB20";
                                     exitWhile = true;
@@ -367,7 +393,8 @@ namespace Cadastro_de_Veiculos{
                     case "5":
                         mark = "Toyota";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - Corolla");
@@ -377,7 +404,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - SW4");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Corolla";
                                     exitWhile = true;
@@ -410,7 +438,8 @@ namespace Cadastro_de_Veiculos{
                     case "6":
                         mark = "Jeep";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - Renegade");
@@ -420,7 +449,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Grand Cherokee");
                             string choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Renegade";
                                     exitWhile = true;
@@ -453,7 +483,8 @@ namespace Cadastro_de_Veiculos{
                     case "7":
                         mark = "Nissan";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - Kicks");
@@ -463,7 +494,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Leaf");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Kicks";
                                     exitWhile = true;
@@ -496,7 +528,8 @@ namespace Cadastro_de_Veiculos{
                     case "8":
                         mark = "Renault";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - Kwid");
@@ -505,7 +538,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[4] - Oroch");
                             Console.WriteLine("[5] - Logan");
                             string? choiceModel = Console.ReadLine();
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Kwid";
                                     exitWhile = true;
@@ -538,7 +572,8 @@ namespace Cadastro_de_Veiculos{
                     case "9":
                         mark = "Honda";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - HR-V");
@@ -548,7 +583,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Accord");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "HR-V";
                                     exitWhile = true;
@@ -581,7 +617,8 @@ namespace Cadastro_de_Veiculos{
                     case "10":
                         mark = "BYD";
                         exitWhile = false;
-                        while(!exitWhile){
+                        while(!exitWhile)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo:");
                             Console.WriteLine("[1] - Dolphin");
@@ -591,7 +628,8 @@ namespace Cadastro_de_Veiculos{
                             Console.WriteLine("[5] - Song Plus");
                             string? choiceModel = Console.ReadLine();
 
-                            switch (choiceModel){
+                            switch (choiceModel)
+                            {
                                 case "1":
                                     model = "Dolphin";
                                     exitWhile = true;
@@ -639,13 +677,17 @@ namespace Cadastro_de_Veiculos{
             DateTime dataConvert;
             string formato = "dd/MM/yyyy";
 
-            while(true){
+            while(true)
+            {
                 Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
                 yearManufacture = Console.ReadLine();
 
-                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
+                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
+                {
                     break; 
-                } else {
+                } 
+                else
+                {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
             }
@@ -671,14 +713,16 @@ namespace Cadastro_de_Veiculos{
             return;
         }
 
-        static async Task Motorcycle(double km = 0){
+        static async Task Motorcycle(double km = 0)
+        {
            int id = nextId;
             nextId++;
             string? mark = "", model = "", yearManufacture;
 
             bool exit = false;
 
-            while(!exit){
+            while(!exit)
+            {
                 Console.Clear();
                 Console.WriteLine("=== MENU - CADASTRO DE MOTO 🏍️ ===");
                 Console.WriteLine("Escolha a marca da moto: ");
@@ -696,10 +740,12 @@ namespace Cadastro_de_Veiculos{
                 string? choiceMoto = Console.ReadLine();
 
                 bool exitModel = false;
-                switch (choiceMoto){
+                switch (choiceMoto)
+                {
                     case "1":
                         mark = "Honda";
-                        while(!exitModel){
+                        while(!exitModel)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo da Honda:");
                             Console.WriteLine("[1] - CG 160");
@@ -741,7 +787,8 @@ namespace Cadastro_de_Veiculos{
 
                     case "2":
                         mark = "Yamaha";
-                        while (!exitModel){
+                        while (!exitModel)
+                        {
                             Console.Clear();
                             Console.WriteLine("Escolha o modelo da Yamaha:");
                             Console.WriteLine("[1] - Fazer 250");
@@ -1158,13 +1205,17 @@ namespace Cadastro_de_Veiculos{
             DateTime dataConvert;
             string formato = "dd/MM/yyyy";
 
-            while(true){
+            while(true)
+            {
                 Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
                 yearManufacture = Console.ReadLine();
 
-                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
+                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
+                {
                     break; 
-                } else {
+                } 
+                else
+                {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
             }
@@ -1187,6 +1238,107 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine($"Moto cadastrado com sucesso no banco de dados! {DateTime.Now}");
             await Task.Delay(5000);
             return;
+        }
+
+        static async Task ListVehicles()
+        {
+            bool exit = false;
+
+            while(!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("=== 🚗 MENU - LISTAR VEÍCULOS 🏍️ ===");
+                Console.WriteLine("[1] - LISTAR TODOS OS VEÍCULOS");
+                Console.WriteLine("[2] - LISTAR OS CARROS");
+                Console.WriteLine("[3] - LISTAR AS MOTOS");
+                Console.WriteLine("[4] - VOLTAR");
+                string? choice = Console.ReadLine();
+                Console.Clear();
+
+                switch(choice)
+                {
+                    case "1":
+                        ListCar();
+                        ListMotorcycle();
+                        Console.WriteLine($"Total de veículos : {car.Count + motorcycle.Count}");
+                        await Task.Delay(10000);
+                        break;
+                    case "2":
+                        ListCar();
+                        Console.WriteLine($"Total de carros : {car.Count}");
+                        await Task.Delay(10000);
+                        break;
+                    case "3":
+                        ListMotorcycle();
+                        Console.WriteLine($"Total de motos: {motorcycle.Count}");
+                        await Task.Delay(10000);
+                        break;
+                    case "4":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                        await Task.Delay(2000);
+                        break;
+                }
+
+            }
+        }
+        
+        static void ListCar(){
+            Console.WriteLine("=== CARROS CADASTRADOS NO SISTEMA 🚗  ===");
+            
+            if(car.Count == 0)
+            {
+                Console.WriteLine("Não há carros cadastrados!");
+                Console.WriteLine();
+            }
+            else
+            {
+                foreach (var obj in car)
+                {
+                    foreach (var item in obj)
+                    {
+                        if(item.Value is DateTime data)
+                        {
+                            Console.WriteLine($"{item.Key} : {data.ToString("dd/MM/yyyy")}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{item.Key} : {item.Value}");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+
+        static void ListMotorcycle(){
+            Console.WriteLine("=== MOTOS CADASTRADOS NO SISTEMA 🏍️  ===");
+            
+            if(motorcycle.Count == 0)
+            {
+                Console.WriteLine("Não há motos cadastradas!");
+                Console.WriteLine();
+            }
+            else
+            {    
+                foreach (var obj in motorcycle)
+                {
+                    foreach (var item in obj)
+                    {
+                        if(item.Value is DateTime data)
+                        {
+                            Console.WriteLine($"{item.Key} : {data.ToString("dd/MM/yyyy")}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{item.Key} : {item.Value}");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
 
         static int nextId = 1;
