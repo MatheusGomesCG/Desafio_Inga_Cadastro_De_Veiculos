@@ -40,6 +40,7 @@ namespace Cadastro_de_Veiculos{
                         await EditVehicle();
                         break;
                     case "4":
+                        await DeleteVehicle();
                         break;
                     case "5":
                         break;
@@ -1551,7 +1552,56 @@ namespace Cadastro_de_Veiculos{
 
             return choice;                
         }
-        static int nextId = 1; 
+
+        static async Task DeleteVehicle()
+        {
+            bool exit = false;
+
+            while(!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("=== 🚗 MENU - EXCLUSÃO DE AUTOMÓVEIS 🏍️ ===");
+                Console.WriteLine("Informe o ID que deseja excluir, caso deseje cancelar digite 'n'");
+                Console.Write("Informe sua opção: ");
+                string? choice = Console.ReadLine().ToLower();
+                bool isNumber = int.TryParse(choice, out int number);
+                bool isChar = char.TryParse(choice, out char isExit);
+                
+                if(isNumber)
+                {
+                    var carObj = car.Find(p => p["id"].Equals(int.Parse(choice)));
+                    var motorcycleObj = motorcycle.Find(p => p["id"].Equals(int.Parse(choice)));
+
+                    if(carObj != null)
+                    {
+                        car.RemoveAll(p => p["id"].Equals(int.Parse(choice)));
+                        Console.WriteLine($"O carro foi excluído com sucesso! {DateTime.Now}");
+                    }
+                    else if(motorcycleObj != null)
+                    {
+                        motorcycle.RemoveAll(p => p["id"].Equals(int.Parse(choice)));
+                        Console.WriteLine($"A moto foi excluído com sucesso! {DateTime.Now}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("O 'ID' digitado não consta no banco de dados");
+                    }
+                    await Task.Delay(2000);
+                    exit = true;
+                    
+                } 
+                else if (isChar && isExit == 'n')
+                {
+                    exit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                    await Task.Delay(2000);
+                }
+            }
+        }
+        static int nextId = 1;
         static List<Dictionary<string, object>> motorcycle = new List<Dictionary<string, object>>();
         static List<Dictionary<string, object>> car = new List<Dictionary<string, object>>();
     }
