@@ -43,6 +43,7 @@ namespace Cadastro_de_Veiculos{
                         await DeleteVehicle();
                         break;
                     case "5":
+                        await SearchVehicle();
                         break;
                     case "6":
                         exit = true;
@@ -1601,7 +1602,72 @@ namespace Cadastro_de_Veiculos{
                 }
             }
         }
-        static int nextId = 1;
+        static async Task SearchVehicle()
+        {
+            bool exit = false;
+
+            while(!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("=== 🚗 MENU - BUSCA DE AUTOMÓVEIS 🏍️ ===");
+                Console.WriteLine("Informe o ID que deseja buscar, caso deseje cancelar digite 'n'");
+                Console.Write("Informe sua opção: ");
+                string? choice = Console.ReadLine().ToLower();
+                bool isNumber = int.TryParse(choice, out int number);
+                bool isChar = char.TryParse(choice, out char isExit);
+
+                if(isNumber)
+                {
+                    var carObj = car.Find(p => p["id"].Equals(int.Parse(choice)));
+                    var motorcycleObj = motorcycle.Find(p => p["id"].Equals(int.Parse(choice)));
+
+                    if(carObj != null)
+                    {
+                        foreach (var item in carObj)
+                        {
+                            if(item.Value is DateTime data)
+                            {
+                                Console.WriteLine($"{item.Key} : {data.ToString("dd/MM/yyyy")}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{item.Key} : {item.Value}");
+                            }
+                        }                       
+                    }
+                    else if(motorcycleObj != null)
+                    {
+                        foreach (var item in motorcycleObj)
+                        {
+                            if(item.Value is DateTime data)
+                            {
+                                Console.WriteLine($"{item.Key} : {data.ToString("dd/MM/yyyy")}");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"{item.Key} : {item.Value}");
+                            }
+                        }
+                    }  
+                    else
+                    {
+                        Console.WriteLine("O 'ID' digitado não consta no banco de dados");
+                    }
+                    await Task.Delay(5000);
+                    exit = true; 
+                } 
+                else if (isChar && isExit == 'n')
+                {
+                    exit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Opção inválida, por favor escolha uma das opções");
+                    await Task.Delay(2000);
+                }
+            }
+        }
+        static int nextId = 1; 
         static List<Dictionary<string, object>> motorcycle = new List<Dictionary<string, object>>();
         static List<Dictionary<string, object>> car = new List<Dictionary<string, object>>();
     }
