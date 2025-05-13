@@ -1549,7 +1549,7 @@ namespace Cadastro_de_Veiculos{
 
             return choice;                
         }
-        static int nextId = 1; 
+        static int nextId = 1;
         static List<Dictionary<string, object>> motorcycle = new List<Dictionary<string, object>>();
         static List<Dictionary<string, object>> car = new List<Dictionary<string, object>>();
     }
