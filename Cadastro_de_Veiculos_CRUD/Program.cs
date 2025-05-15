@@ -684,12 +684,16 @@ namespace Cadastro_de_Veiculos{
                 Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
                 yearManufacture = Console.ReadLine();
 
-                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
-                {
-                    break; 
-                } 
-                else
-                {
+                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
+                    if (dataConvert <= DateTime.Now)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Data inválida! Por favor, digite uma data inferior a {DateTime.Now.ToString("dd/MM/yyyy")}");
+                    } 
+                } else {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
             }
@@ -1212,12 +1216,16 @@ namespace Cadastro_de_Veiculos{
                 Console.Write("Digite o ano de fabricação do veículo dd/MM/yyyy: ");
                 yearManufacture = Console.ReadLine();
 
-                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert))
-                {
-                    break; 
-                } 
-                else
-                {
+                if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
+                    if (dataConvert <= DateTime.Now)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Data inválida! Por favor, digite uma data inferior a {DateTime.Now.ToString("dd/MM/yyyy")}");
+                    }
+                } else {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
             }
