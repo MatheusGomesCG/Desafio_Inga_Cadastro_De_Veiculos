@@ -659,7 +659,7 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine($"Marca = {mark}");
             Console.WriteLine($"Modelo = {model}");
             Console.WriteLine($"Quilometragem = {km.ToString("F2", CultureInfo.InvariantCulture)}km");
-            Console.WriteLine($"Ano de Fabricação = {dataConvert.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Data de Fabricação = {dataConvert.ToString("dd/MM/yyyy")}");
             
             Dictionary<string, object> newCar = new Dictionary<string, object>();
             newCar["id"] = id;
@@ -1185,7 +1185,7 @@ namespace Cadastro_de_Veiculos{
             Console.WriteLine($"Marca = {mark}");
             Console.WriteLine($"Modelo = {model}");
             Console.WriteLine($"Quilometragem = {km.ToString("F2", CultureInfo.InvariantCulture)}km");
-            Console.WriteLine($"Ano de Fabricação = {dataConvert.ToString("dd/MM/yyyy")}");
+            Console.WriteLine($"Data de Fabricação = {dataConvert.ToString("dd/MM/yyyy")}");
             
             Dictionary<string, object> newMotorcycle = new Dictionary<string, object>();
             newMotorcycle["id"] = id;
