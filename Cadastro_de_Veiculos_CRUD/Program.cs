@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Globalization;
 using System.Threading.Tasks;
 
@@ -642,7 +642,14 @@ namespace Cadastro_de_Veiculos{
                 yearManufacture = Console.ReadLine();
 
                 if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
-                    break; 
+                    if (dataConvert <= DateTime.Now)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Data inválida! Por favor, digite uma data inferior a {DateTime.Now.ToString("dd/MM/yyyy")}");
+                    } 
                 } else {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
@@ -1161,7 +1168,14 @@ namespace Cadastro_de_Veiculos{
                 yearManufacture = Console.ReadLine();
 
                 if(DateTime.TryParseExact(yearManufacture, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataConvert)){
-                    break; 
+                    if (dataConvert <= DateTime.Now)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Data inválida! Por favor, digite uma data inferior a {DateTime.Now.ToString("dd/MM/yyyy")}");
+                    }
                 } else {
                     Console.WriteLine("O campo: 'Ano de Fabricação' foi preenchido incorretamente, por favor preencha com tipo de dados do campo");
                 }
